@@ -11,7 +11,8 @@ import {
   Rss,
   TrendingUp,
   RefreshCw,
-  Sparkles
+  Sparkles,
+  Heart
 } from "lucide-react";
 import { ProgressTracker } from "@/components/ProgressTracker";
 import { ContentApprovalCard } from "@/components/ContentApprovalCard";
@@ -145,7 +146,7 @@ const Index = () => {
 
         <Tabs defaultValue="submit" className="space-y-8">
           <div className="flex justify-center">
-            <TabsList className="grid grid-cols-4 lg:grid-cols-8 bg-white/80 backdrop-blur-sm border border-slate-200/50 shadow-lg rounded-xl p-1">
+            <TabsList className="grid grid-cols-4 lg:grid-cols-9 bg-white/80 backdrop-blur-sm border border-slate-200/50 shadow-lg rounded-xl p-1">
               <TabsTrigger value="submit" className="flex items-center gap-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-blue-500 data-[state=active]:to-purple-500 data-[state=active]:text-white rounded-lg transition-all duration-200">
                 <Upload className="h-4 w-4" />
                 <span className="hidden sm:inline">Submit</span>
@@ -177,6 +178,10 @@ const Index = () => {
               <TabsTrigger value="tracking" className="flex items-center gap-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-emerald-500 data-[state=active]:to-teal-500 data-[state=active]:text-white rounded-lg transition-all duration-200">
                 <TrendingUp className="h-4 w-4" />
                 <span className="hidden sm:inline">Tracking</span>
+              </TabsTrigger>
+              <TabsTrigger value="dentistry-news" className="flex items-center gap-2 data-[state=active]:bg-gradient-to-r data-[state=active]:from-pink-500 data-[state=active]:to-rose-500 data-[state=active]:text-white rounded-lg transition-all duration-200">
+                <Heart className="h-4 w-4" />
+                <span className="hidden sm:inline">Dentistry</span>
               </TabsTrigger>
             </TabsList>
           </div>
@@ -444,6 +449,33 @@ const Index = () => {
 
           <TabsContent value="tracking" className="space-y-6">
             <TrackingDashboard stats={trackingStats} />
+          </TabsContent>
+
+          <TabsContent value="dentistry-news" className="space-y-6">
+            <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-xl">
+              <CardHeader className="bg-gradient-to-r from-pink-500/10 to-rose-500/10 border-b border-slate-200/50">
+                <CardTitle className="flex items-center space-x-3">
+                  <div className="p-2 bg-gradient-to-r from-pink-500 to-rose-500 rounded-lg">
+                    <Heart className="h-5 w-5 text-white" />
+                  </div>
+                  <span className="text-xl">Dentistry News Review</span>
+                </CardTitle>
+                <CardDescription className="text-slate-600">
+                  Review dentistry-specific news content for approval and publishing
+                </CardDescription>
+              </CardHeader>
+            </Card>
+
+            <div className="grid gap-6">
+              <Card className="bg-white/80 backdrop-blur-sm border-0 shadow-lg">
+                <CardContent className="p-12 text-center">
+                  <div className="p-4 bg-gradient-to-r from-pink-100 to-rose-200 rounded-full w-fit mx-auto mb-6">
+                    <Heart className="mx-auto h-12 w-12 text-pink-500" />
+                  </div>
+                  <p className="text-slate-500 text-lg">No pending dentistry news articles found</p>
+                </CardContent>
+              </Card>
+            </div>
           </TabsContent>
         </Tabs>
       </div>
